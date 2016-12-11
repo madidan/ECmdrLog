@@ -115,13 +115,11 @@ public class RWindow {
 
 		// Note text
 		notePane = new JTextPane();
-		
 		JScrollPane scrollPane = new JScrollPane(notePane);
 		scrollPane.setBounds(29, 77, 377, 255);
 		frame.getContentPane().add(scrollPane);
 		
 		// imagesPane
-		
 		imagePane = new JPanel();
 		JScrollPane panel = new JScrollPane(imagePane);
 		panel.setBounds(29, 343, 377, 100);
