@@ -1,18 +1,21 @@
-package app;
-
-import java.awt.EventQueue;
+package app.gui;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+
+import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import app.journal.JSONReader;
 
 import javax.swing.JTabbedPane;
 import javax.swing.JTextPane;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.Toolkit;
 
 public class LWindow {
 
@@ -23,43 +26,28 @@ public class LWindow {
 	private JTextPane txtpnMissions;
 	private JTextPane txtpnBalance;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LWindow window = new LWindow();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
-
-	/**
-	 * Create the application.
-	 */
 	public LWindow() {
-		Runnable journalProcessor = () -> {
-			new JSONReader(this);
-		};
+		Runnable journalProcessor = () -> new JSONReader(this);
 		new Thread(journalProcessor).start();
+		
 		initialize();
+		frame.setVisible(true);		
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+		int windowWidth = 450; 
+		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setBackground(Color.WHITE);
+		frame.getContentPane().setForeground(Color.BLACK);
+		frame.setUndecorated(true);
+		frame.setBounds(screenWidth-windowWidth, 300, windowWidth, 500);
 		frame.getContentPane().setLayout(null);
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panelSys = new JPanel();
 		panelSys.setBounds(0, 11, 434, 70);

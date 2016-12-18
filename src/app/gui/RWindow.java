@@ -1,7 +1,6 @@
-package app;
+package app.gui;
 
 import java.awt.AWTException;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -30,14 +29,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import java.awt.Color;
-import java.awt.Dimension;
 import javax.swing.JPanel;
 
 public class RWindow {
@@ -52,26 +48,11 @@ public class RWindow {
 	static final String DATAFILE = DATAPATH+"notes.json";
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RWindow window = new RWindow();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 */
 	public RWindow() {
 		initialize();
+		frame.setVisible(true);
 	}
 
 	/**
